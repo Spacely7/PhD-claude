@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eric Kumi | Data Researcher</title>
+<meta name="description" content="Academic research portfolio of Eric Kumi, a data researcher interested in machine learning, predictive analytics, and intelligent decision systems.">
+<meta name="author" content="Eric Kumi">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --ink:#0F1E2E;
+    --ink-soft:#1E3247;
+    --paper:#EDF1F2;
+    --panel:#FFFFFF;
+    --line:#C7D3D8;
+    --line-dark:rgba(237,241,242,0.14);
+    --brass:#A9761E;
+    --brass-deep:#7C5713;
+    --text:#182430;
+    --muted:#54626C;
+    --muted-dark:#AEBCC6;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+    font-family:"IBM Plex Sans", sans-serif;
+    color:var(--text);
+    background:var(--paper);
+    line-height:1.68;
+}
+
+h1,h2,h3,h4{
+    font-family:"Source Serif 4", serif;
+    color:var(--ink);
+    font-weight:700;
+    letter-spacing:-0.01em;
+}
+
+a{text-decoration:none;color:inherit;}
+.mono{font-family:"IBM Plex Mono", monospace;}
+a:focus-visible, button:focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
+
+.section-padding{padding:96px 0;}
+.container-narrow{max-width:1180px;margin:0 auto;padding:0 20px;}
+
+.kicker{
+    display:flex;align-items:center;gap:10px;
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.85rem;color:var(--brass);margin-bottom:16px;
+}
+.kicker::before{content:"";width:18px;height:1px;background:var(--brass);}
+.kicker.on-dark{color:#D9B25F;}
+.kicker.on-dark::before{background:#D9B25F;}
+
+.section-title{
+    font-size:clamp(1.9rem, 3.2vw, 2.6rem);
+    line-height:1.2;
+    margin-bottom:18px;
+}
+.section-description{color:var(--muted);max-width:64ch;font-size:1.02rem;}
+
+.grid-backdrop{
+    position:absolute;inset:0;
+    background-image:
+        linear-gradient(rgba(169,118,30,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(169,118,30,0.08) 1px, transparent 1px);
+    background-size:44px 44px;
+    pointer-events:none;
+}
+.grid-backdrop.dark{
+    background-image:
+        linear-gradient(var(--line-dark) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line-dark) 1px, transparent 1px);
+}
+
+/* NAV */
+.navbar{background:rgba(237,241,242,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:14px 0;}
+.navbar-brand{font-family:"Source Serif 4", serif;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:10px;font-size:1.15rem;}
+.brand-mark{font-family:"IBM Plex Mono", monospace;font-size:0.72rem;color:var(--panel);background:var(--ink);padding:4px 7px;}
+.nav-link{font-family:"IBM Plex Mono", monospace;color:var(--text) !important;font-size:0.84rem;padding:8px 12px !important;border-bottom:1px solid transparent;}
+.nav-link:hover{border-bottom-color:var(--brass);}
+
+/* HERO */
+.hero{position:relative;padding:150px 0 96px;overflow:hidden;}
+.hero-role{font-family:"Source Serif 4", serif;font-style:italic;font-weight:500;font-size:clamp(1.1rem,1.6vw,1.35rem);color:var(--ink-soft);margin-bottom:20px;}
+.hero-title{font-size:clamp(2.6rem, 5.6vw, 4.3rem);line-height:1.03;margin-bottom:20px;}
+.hero-description{max-width:66ch;font-size:1.06rem;color:var(--muted);margin-bottom:30px;}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:30px;}
+.btn-ink{font-family:"IBM Plex Mono", monospace;font-size:0.88rem;background:var(--ink);color:var(--paper);border:1px solid var(--ink);padding:13px 22px;transition:background .2s,color .2s;display:inline-block;}
+.btn-ink:hover{background:var(--brass);border-color:var(--brass);color:#fff;}
+.btn-line{font-family:"IBM Plex Mono", monospace;font-size:0.88rem;background:transparent;color:var(--ink);border:1px solid var(--line);padding:13px 22px;transition:border-color .2s,color .2s;display:inline-block;}
+.btn-line:hover{border-color:var(--brass);color:var(--brass-deep);}
+.btn-sm-line{font-family:"IBM Plex Mono", monospace;font-size:0.8rem;border:1px solid var(--line);color:var(--ink-soft);padding:8px 14px;display:inline-block;}
+.btn-sm-line:hover{border-color:var(--brass);color:var(--brass-deep);}
+
+.chip{display:inline-block;font-family:"IBM Plex Mono", monospace;font-size:0.78rem;border:1px solid var(--line);color:var(--ink-soft);padding:6px 10px;margin:3px 6px 3px 0;background:var(--panel);}
+
+/* LEDGER (research profile / agenda rows) */
+.ledger{border-top:1px solid var(--line);}
+.ledger-row{display:grid;grid-template-columns:96px 1fr;gap:20px;padding:26px 4px;border-bottom:1px solid var(--line);transition:background .2s ease;}
+.ledger-row:hover{background:rgba(169,118,30,0.05);}
+.ledger-code{font-family:"IBM Plex Mono", monospace;font-size:0.85rem;color:var(--brass-deep);padding-top:4px;}
+.ledger-row h3{font-size:1.15rem;margin-bottom:8px;}
+.ledger-row p{color:var(--muted);margin:0;max-width:64ch;}
+
+/* PULL QUOTE */
+.pull-quote{border-left:2px solid var(--brass);padding:6px 0 6px 26px;}
+.pull-quote p{font-family:"Source Serif 4", serif;font-style:italic;font-size:1.25rem;color:var(--ink-soft);margin:0;max-width:60ch;}
+
+/* TIMELINE */
+.timeline{border-left:1px solid var(--line);padding-left:34px;position:relative;}
+.timeline-item{position:relative;padding-bottom:48px;}
+.timeline-item:last-child{padding-bottom:0;}
+.timeline-marker{position:absolute;left:-39px;top:4px;width:9px;height:9px;background:var(--brass);}
+.timeline-phase{font-family:"IBM Plex Mono", monospace;color:var(--brass-deep);font-size:0.82rem;margin-bottom:6px;}
+.timeline-item h3{font-size:1.5rem;margin-bottom:10px;}
+.timeline-item p{color:var(--muted);max-width:66ch;margin:0;}
+
+/* CASE FILE (featured research) */
+.case-file{border:1px solid var(--ink);background:var(--panel);}
+.case-head{padding:48px 46px 36px;border-bottom:1px solid var(--line);position:relative;}
+.stamp{display:inline-block;font-family:"IBM Plex Mono", monospace;font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--brass-deep);border:1.5px solid var(--brass-deep);padding:5px 10px;transform:rotate(-3deg);margin-bottom:20px;}
+.case-head h2{font-size:clamp(1.55rem, 3.2vw, 2.15rem);max-width:840px;margin-bottom:0;}
+.case-meta{border-top:1px solid var(--line);margin-top:28px;padding-top:22px;display:flex;flex-wrap:wrap;gap:34px;}
+.case-meta-item small{display:block;font-family:"IBM Plex Mono", monospace;font-size:0.72rem;color:var(--muted);margin-bottom:6px;}
+.case-meta-item strong{font-family:"IBM Plex Mono", monospace;font-size:0.88rem;color:var(--ink);font-weight:600;}
+.case-body{padding:48px 46px;}
+.case-block{margin-bottom:48px;}
+.case-block:last-child{margin-bottom:0;}
+.case-block h4{font-size:1.25rem;margin-bottom:14px;}
+.case-block p{color:var(--muted);max-width:70ch;}
+
+/* METHOD STEPS (DSRM) */
+.method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:20px;}
+.method-step{background:var(--panel);padding:24px;}
+.method-num{font-family:"IBM Plex Mono", monospace;color:var(--brass-deep);font-size:0.85rem;margin-bottom:10px;}
+.method-step h5{font-family:"Source Serif 4", serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:8px;}
+.method-step p{color:var(--muted);font-size:0.88rem;margin:0;}
+
+/* PIPELINE */
+.pipeline{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px;}
+.pipeline-item{font-family:"IBM Plex Mono", monospace;font-size:0.8rem;border:1px solid var(--line);padding:9px 13px;background:var(--panel);color:var(--ink-soft);}
+.pipeline-arrow{color:var(--brass);font-family:"IBM Plex Mono", monospace;}
+
+/* RESULT PANELS */
+.result-panel{border-left:2px solid var(--brass);background:var(--paper);padding:18px 20px;height:100%;}
+.result-panel h5{font-family:"Source Serif 4", serif;font-size:1rem;font-weight:600;margin-bottom:6px;}
+.result-panel p{color:var(--muted);font-size:0.9rem;margin:0;}
+
+/* UNDERGRAD PANEL */
+.grad-panel{border:1px solid var(--line);padding:44px;}
+
+/* CAPABILITIES */
+.capabilities-section{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.cap-block{border-top:1px solid var(--line);padding:22px 0;}
+.cap-block:first-child{border-top:none;}
+.cap-block h3{font-size:1.05rem;margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.cap-block h3 i{color:var(--brass);font-size:1.1rem;}
+.cap-block p{color:var(--muted);font-size:0.95rem;margin:0;}
+
+/* PHD QUOTE (dark) */
+.phd-quote{background:var(--ink);color:var(--paper);padding:52px 46px;margin-top:48px;position:relative;overflow:hidden;}
+.phd-quote h3{color:#F2EEE4;font-family:"Source Serif 4", serif;font-style:italic;font-weight:500;font-size:clamp(1.35rem, 2.6vw, 1.9rem);line-height:1.5;max-width:840px;border-left:2px solid var(--brass);padding-left:24px;}
+.phd-quote p{color:var(--muted-dark);margin-top:22px;margin-bottom:0;font-size:0.92rem;}
+
+/* EDUCATION */
+.education-card{padding:28px 0;border-bottom:1px solid var(--line);}
+.education-card:last-child{border-bottom:none;}
+.education-card h3{font-size:1.4rem;margin-bottom:6px;}
+.education-meta{font-family:"IBM Plex Mono", monospace;color:var(--brass-deep);font-size:0.8rem;}
+.education-card p{color:var(--muted);margin-bottom:4px;}
+
+/* DOCUMENT PANELS */
+.doc-panel{height:100%;border:1px solid var(--line);border-top:2px solid var(--ink);background:var(--panel);padding:26px;}
+.doc-ref{font-family:"IBM Plex Mono", monospace;font-size:0.78rem;color:var(--brass-deep);margin-bottom:14px;}
+.doc-panel h3{font-size:1.1rem;margin-bottom:8px;}
+.doc-panel p{color:var(--muted);font-size:0.92rem;}
+
+/* CONTACT */
+.contact-section{background:var(--ink);color:var(--paper);}
+.contact-section h2{color:var(--paper);}
+.contact-link{display:flex;align-items:center;gap:12px;font-family:"IBM Plex Mono", monospace;font-size:0.95rem;color:#E7EDEF;padding:12px 0;border-bottom:1px solid var(--line-dark);max-width:340px;}
+.contact-link:hover{color:#D9B25F;}
+.contact-link i{color:#D9B25F;font-size:1.05rem;}
+
+footer{background:#081120;color:#7C8A93;padding:22px 0;font-family:"IBM Plex Mono", monospace;font-size:0.8rem;}
+
+/* single deliberate hero entrance */
+.hero-content > *{opacity:0;animation:rise .7s ease forwards;}
+.hero-content > *:nth-child(1){animation-delay:.05s;}
+.hero-content > *:nth-child(2){animation-delay:.15s;}
+.hero-content > *:nth-child(3){animation-delay:.25s;}
+.hero-content > *:nth-child(4){animation-delay:.35s;}
+.hero-content > *:nth-child(5){animation-delay:.45s;}
+@keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important;}}
+
+@media (max-width:991px){
+    .navbar-collapse{background:var(--panel);padding:16px;border:1px solid var(--line);margin-top:10px;}
+    .hero{padding:130px 0 70px;}
+    .case-head,.case-body{padding:32px 24px;}
+    .method-grid{grid-template-columns:1fr 1fr;}
+    .grad-panel{padding:28px;}
+    .phd-quote{padding:36px 26px;}
+}
+@media (max-width:576px){
+    .section-padding{padding:64px 0;}
+    .ledger-row{grid-template-columns:1fr;}
+    .method-grid{grid-template-columns:1fr;}
+    .timeline{padding-left:24px;}
+    .timeline-marker{left:-29px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-narrow d-flex justify-content-between align-items-center flex-wrap">
+    <a class="navbar-brand" href="#home"><span class="brand-mark">EK</span> Eric Kumi</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list fs-2"></i>
+    </button>
+    <div class="collapse navbar-collapse flex-grow-0" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+        <li class="nav-item"><a class="nav-link" href="#journey">Journey</a></li>
+        <li class="nav-item"><a class="nav-link" href="#agenda">Research agenda</a></li>
+        <li class="nav-item"><a class="nav-link" href="#background">Background</a></li>
+        <li class="nav-item"><a class="nav-link" href="#documents">Documents</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="grid-backdrop"></div>
+  <div class="container-narrow hero-content" style="position:relative;z-index:2;">
+    <div class="kicker">Academic research portfolio</div>
+    <h1 class="hero-title">Eric Kumi</h1>
+    <div class="hero-role">Data Researcher — Machine Learning &amp; Intelligent Decision Systems</div>
+    <p class="hero-description">
+      I am an emerging data researcher interested in how machine learning,
+      predictive analytics, and intelligent decision systems can support
+      better decision-making in complex operational environments.
+    </p>
+    <div class="btn-row">
+      <a href="#research" class="btn-ink">Explore my research</a>
+      <a href="#documents" class="btn-line">Research documents</a>
+    </div>
+    <div>
+      <span class="chip">Machine learning</span>
+      <span class="chip">Predictive analytics</span>
+      <span class="chip">Intelligent decision systems</span>
+      <span class="chip">Explainable analytics</span>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH PROFILE -->
+<section class="section-padding" id="research">
+  <div class="container-narrow">
+    <div class="kicker">Research profile</div>
+    <h2 class="section-title">Understanding data. Building insight.<br>Supporting better decisions.</h2>
+    <p class="section-description">
+      My research interests are centred on understanding how data-driven
+      methods can support decision-making in complex and dynamic
+      environments. I am particularly interested in the intersection of
+      machine learning, predictive analytics, forecasting, visual analytics,
+      and intelligent decision systems.
+    </p>
+    <p class="section-description mt-3">
+      My academic research has progressed from predictive modelling and
+      demand forecasting during my undergraduate studies to the integration
+      of machine learning, analytics, visualisation, and decision-support
+      artefact development during my master's research.
+    </p>
+
+    <div class="ledger mt-5">
+      <div class="ledger-row">
+        <div class="ledger-code">ML · PA</div>
+        <div>
+          <h3>Machine learning &amp; predictive analytics</h3>
+          <p>Exploring how machine-learning methods can identify patterns, support prediction, and generate analytical insights for complex operational challenges.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-code">FDP</div>
+        <div>
+          <h3>Forecasting &amp; data-driven planning</h3>
+          <p>Investigating forecasting approaches that can support planning and decision-making under uncertainty.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-code">IDS</div>
+        <div>
+          <h3>Intelligent decision systems</h3>
+          <p>Examining how data, analytical models, and interactive systems can be integrated to support informed decision-making.</p>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-code">XAI</div>
+        <div>
+          <h3>Explainable &amp; human-centred AI</h3>
+          <p>Developing an interest in how predictive models can be interpreted and meaningfully incorporated into human decision-making processes.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 pull-quote">
+      <div class="kicker">Research philosophy</div>
+      <p>I am interested in research that connects analytical methods with meaningful real-world problems. The value of data and machine learning is not only in producing predictions, but also in generating insights that can be understood and used within real decision-making contexts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH JOURNEY -->
+<section class="section-padding" id="journey" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="container-narrow">
+    <div class="kicker">Research journey</div>
+    <h2 class="section-title">From prediction to intelligent decision support</h2>
+    <p class="section-description mb-5">
+      My research journey has progressively developed from predictive
+      modelling and forecasting toward the design of intelligent,
+      data-driven decision-support systems.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-phase">Undergraduate research</div>
+        <h3>Predicting product demand using machine learning</h3>
+        <p>My undergraduate research investigated forecasting and machine-learning approaches for product demand prediction, establishing my early interest in predictive analytics, uncertainty, and data-driven planning.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-phase">Master's research</div>
+        <h3>Real-time port activity monitoring &amp; decision support</h3>
+        <p>My master's research expanded this interest into the integration of data analytics, machine learning, interactive visualisation, and decision-support artefact development within a Ghanaian port operations context.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-phase">Emerging doctoral direction</div>
+        <h3>Explainable &amp; human-centred intelligent systems</h3>
+        <p>These experiences have shaped my interest in investigating how predictive analytics, explainable machine learning, and human judgement can be brought together within intelligent decision-support systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED MASTER'S RESEARCH -->
+<section class="section-padding" id="masters-research">
+  <div class="container-narrow">
+    <div class="kicker">Featured research</div>
+    <div class="case-file">
+      <div class="case-head">
+        <span class="stamp">Master's thesis</span>
+        <h2>Development and analysis of a real-time port activity monitoring dashboard in Ghana</h2>
+        <div class="case-meta">
+          <div class="case-meta-item"><small>Research method</small><strong>Design Science Research</strong></div>
+          <div class="case-meta-item"><small>Research domain</small><strong>Port operations &amp; analytics</strong></div>
+          <div class="case-meta-item"><small>Core methods</small><strong>ML · Visual analytics · Decision support</strong></div>
+        </div>
+      </div>
+
+      <div class="case-body">
+
+        <div class="case-block row">
+          <div class="col-lg-4"><h4>The problem</h4></div>
+          <div class="col-lg-8">
+            <p>Ports generate substantial volumes of operational and trade data, but transforming these data into timely and actionable intelligence can be challenging.</p>
+            <p>The research investigated how data analytics, machine learning, and interactive visualisation could be integrated into a decision-support artefact for port activity monitoring in Ghana.</p>
+          </div>
+        </div>
+
+        <div class="case-block row">
+          <div class="col-lg-4"><h4>Research aim</h4></div>
+          <div class="col-lg-8">
+            <div class="pull-quote">
+              <p>To develop and analyse a real-time port activity monitoring dashboard that integrates data analytics, machine learning, and interactive visualisation to support operational monitoring and decision-making in Ghana.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block row">
+          <div class="col-lg-4"><h4>Data</h4></div>
+          <div class="col-lg-8">
+            <p>The study used Ghana Customs Bills of Entry data containing operational, financial, temporal, geographical, cargo, and risk-related attributes.</p>
+            <div class="pipeline">
+              <span class="pipeline-item">Customs data</span><span class="pipeline-arrow">→</span>
+              <span class="pipeline-item">Data preparation</span><span class="pipeline-arrow">→</span>
+              <span class="pipeline-item">Exploratory analysis</span><span class="pipeline-arrow">→</span>
+              <span class="pipeline-item">Predictive analytics</span><span class="pipeline-arrow">→</span>
+              <span class="pipeline-item">Decision support</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block">
+          <div class="row">
+            <div class="col-lg-4"><h4>Methodology</h4></div>
+            <div class="col-lg-8">
+              <p>The research adopted a Design Science Research approach to guide the development and evaluation of the decision-support artefact.</p>
+            </div>
+          </div>
+          <div class="method-grid">
+            <div class="method-step"><div class="method-num">01</div><h5>Problem identification</h5><p>Identifying and motivating the operational decision-support problem.</p></div>
+            <div class="method-step"><div class="method-num">02</div><h5>Solution objectives</h5><p>Defining objectives for the proposed analytical artefact.</p></div>
+            <div class="method-step"><div class="method-num">03</div><h5>Design &amp; development</h5><p>Designing and developing the analytical decision-support artefact.</p></div>
+            <div class="method-step"><div class="method-num">04</div><h5>Demonstration</h5><p>Demonstrating how the artefact could be used to explore operational information.</p></div>
+            <div class="method-step"><div class="method-num">05</div><h5>Evaluation</h5><p>Evaluating analytical and artefact-related outcomes.</p></div>
+            <div class="method-step"><div class="method-num">06</div><h5>Communication</h5><p>Communicating the research problem, process, findings and implications.</p></div>
+          </div>
+        </div>
+
+        <div class="case-block row">
+          <div class="col-lg-4"><h4>Machine learning</h4></div>
+          <div class="col-lg-8">
+            <p>The study compared multiple machine-learning approaches for the classification task investigated in the research.</p>
+            <div>
+              <span class="chip">Logistic regression</span><span class="chip">Decision tree</span><span class="chip">Random forest</span>
+              <span class="chip">Gradient boosting</span><span class="chip">SVM</span><span class="chip">KNN</span>
+              <span class="chip">XGBoost</span><span class="chip">LightGBM</span>
+            </div>
+            <p class="mt-3">Model evaluation considered metrics including accuracy, precision, recall, and F1-score, while the analysis also considered the implications of class imbalance.</p>
+          </div>
+        </div>
+
+        <div class="case-block row">
+          <div class="col-lg-4"><h4>Looking beyond prediction</h4></div>
+          <div class="col-lg-8">
+            <p>Predictive performance alone does not explain why a model produces a particular result. The research therefore incorporated feature-importance analysis and SHAP-based interpretation to investigate factors influencing model predictions.</p>
+            <div class="pull-quote mt-3">
+              <p>Prediction → explanation → decision. This perspective has contributed to my growing interest in explainable and human-centred intelligent decision systems.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block row">
+          <div class="col-lg-4"><h4>Interactive decision support</h4></div>
+          <div class="col-lg-8">
+            <p>The research developed a Power BI-based proof-of-concept dashboard designed to consolidate analytical information into an interactive monitoring environment.</p>
+            <div class="row g-3 mt-2">
+              <div class="col-sm-6"><div class="result-panel"><h5>Operational overview</h5><p>Consolidated analytical indicators for exploring port activity.</p></div></div>
+              <div class="col-sm-6"><div class="result-panel"><h5>Geographic analysis</h5><p>Exploration of geographical patterns within the data.</p></div></div>
+              <div class="col-sm-6"><div class="result-panel"><h5>Commodity analysis</h5><p>Examination of commodity and trade patterns.</p></div></div>
+              <div class="col-sm-6"><div class="result-panel"><h5>Risk analysis</h5><p>Analytical exploration of risk-related information.</p></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block row">
+          <div class="col-lg-4"><h4>Contribution</h4></div>
+          <div class="col-lg-8">
+            <div class="row g-3">
+              <div class="col-md-6"><div class="result-panel"><h5>Applied contribution</h5><p>Demonstrated an approach for integrating data analytics and machine learning within a Ghanaian port operations context.</p></div></div>
+              <div class="col-md-6"><div class="result-panel"><h5>Artefact contribution</h5><p>Developed a proof-of-concept interactive decision-support dashboard.</p></div></div>
+              <div class="col-md-6"><div class="result-panel"><h5>Analytical contribution</h5><p>Compared predictive approaches while considering evaluation and class imbalance.</p></div></div>
+              <div class="col-md-6"><div class="result-panel"><h5>Future foundation</h5><p>Established directions for further work involving explainability, richer data, and human-centred decision support.</p></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block row">
+          <div class="col-lg-4"><h4>Limitations &amp; learning</h4></div>
+          <div class="col-lg-8">
+            <p>The research was developed as a proof-of-concept and was constrained by the available dataset and scope of the study. The work also highlighted challenges involving class imbalance, data availability, additional data integration, and the need to evaluate predictive systems within realistic decision-making conditions.</p>
+            <div class="pull-quote mt-3">
+              <p>A predictive system should be evaluated not only by how accurately it predicts, but also by how, when, and why its predictions can responsibly support decisions.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNDERGRADUATE RESEARCH -->
+<section class="section-padding" id="undergraduate" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="container-narrow">
+    <div class="kicker">Earlier research</div>
+    <div class="grad-panel">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <div class="kicker">Undergraduate thesis</div>
+          <h2 class="section-title">Predicting product demand using machine learning</h2>
+          <p class="mono" style="color:var(--brass-deep);font-size:0.85rem;">BSc Information Technology</p>
+        </div>
+        <div class="col-lg-8">
+          <p>My undergraduate research investigated the application of statistical forecasting and machine-learning approaches to product demand prediction, with the broader objective of supporting production planning under demand uncertainty.</p>
+          <p>The study provided an early foundation in predictive analytics and introduced me to the challenge of comparing different modelling approaches for a practical forecasting problem.</p>
+          <h4 class="mt-4" style="font-size:1.05rem;">Methods explored</h4>
+          <div class="mt-2">
+            <span class="chip">AR</span><span class="chip">ARIMA</span><span class="chip">SARIMAX</span>
+            <span class="chip">Exponential smoothing</span><span class="chip">XGBoost</span><span class="chip">Random forest</span>
+          </div>
+          <h4 class="mt-4" style="font-size:1.05rem;">From models to application</h4>
+          <p>The project also extended beyond model experimentation into the development of a web-based prediction application, connecting analytical outputs with a practical user-facing system.</p>
+          <div class="result-panel mt-3">
+            <h5>Research significance</h5>
+            <p>This research established my early interest in predictive analytics, forecasting, and translating analytical models into practical decision-support applications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="section-padding capabilities-section" id="capabilities">
+  <div class="container-narrow">
+    <div class="kicker">Research capabilities</div>
+    <h2 class="section-title">Research methods &amp; technical capabilities</h2>
+    <p class="section-description mb-5">
+      My technical capabilities support the broader research process: from
+      data preparation and quantitative analysis to predictive modelling,
+      interpretation, visualisation, and decision-support artefact
+      development.
+    </p>
+
+    <div class="row g-5">
+      <div class="col-lg-6">
+        <div class="cap-block">
+          <h3><i class="bi bi-search"></i>Research &amp; quantitative analysis</h3>
+          <p>Research problem formulation, data preparation, exploratory analysis, statistical analysis, feature engineering, and model evaluation.</p>
+        </div>
+        <div class="cap-block">
+          <h3><i class="bi bi-cpu"></i>Machine learning</h3>
+          <p>Classification, predictive modelling, ensemble methods, feature importance, comparative model evaluation, and explainability.</p>
+        </div>
+        <div class="cap-block">
+          <h3><i class="bi bi-clock-history"></i>Forecasting &amp; time series</h3>
+          <p>Time-series analysis, ARIMA, SARIMAX, exponential smoothing, and machine-learning approaches to forecasting.</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="cap-block">
+          <h3><i class="bi bi-bar-chart-line"></i>Visual analytics</h3>
+          <p>Interactive analytical visualisation, dashboard development, data storytelling, and exploration of complex datasets.</p>
+        </div>
+        <div class="cap-block">
+          <h3><i class="bi bi-diagram-3"></i>Decision-support artefacts</h3>
+          <p>Integration of data, analytical models and interactive interfaces into research artefacts designed to support decision-making.</p>
+        </div>
+        <div class="cap-block">
+          <h3><i class="bi bi-code-slash"></i>Technical environment</h3>
+          <div class="mt-2">
+            <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Pandas</span><span class="chip">NumPy</span>
+            <span class="chip">Scikit-learn</span><span class="chip">XGBoost</span><span class="chip">LightGBM</span>
+            <span class="chip">Statsmodels</span><span class="chip">Power BI</span><span class="chip">Tableau</span>
+            <span class="chip">Plotly</span><span class="chip">Streamlit</span><span class="chip">Jupyter</span><span class="chip">GitHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH AGENDA -->
+<section class="section-padding" id="agenda">
+  <div class="container-narrow">
+    <div class="kicker">Emerging research agenda</div>
+    <h2 class="section-title">From previous research toward doctoral questions</h2>
+    <p class="section-description mb-5">
+      My emerging research agenda builds on the questions and methodological
+      experiences developed through my undergraduate and master's research.
+    </p>
+
+    <div class="ledger">
+      <div class="ledger-row">
+        <div class="ledger-code">XAI</div>
+        <div><h3>Explainable machine learning</h3><p>Investigating how machine-learning predictions can be made more interpretable and useful to decision-makers.</p></div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-code">HAI</div>
+        <div><h3>Human–AI decision support</h3><p>Exploring how intelligent systems can complement human judgement rather than simply automate decisions.</p></div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-code">ADP</div>
+        <div><h3>Adaptive predictive systems</h3><p>Investigating how predictive systems can respond to changing data, conditions, and operational patterns.</p></div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-code">RML</div>
+        <div><h3>Robust &amp; responsible machine learning</h3><p>Exploring reliability, class imbalance, uncertainty, changing data, and responsible use of predictive systems.</p></div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-code">ICO</div>
+        <div><h3>Intelligent systems for complex operations</h3><p>Applying intelligent decision-support concepts to environments where decisions involve multiple data sources, uncertainty, and human judgement.</p></div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-code">DDI</div>
+        <div><h3>Data-driven decision intelligence</h3><p>Exploring the connection between predictive analytics, explanation, visual analytics, and actionable decision-making.</p></div>
+      </div>
+    </div>
+
+    <div class="phd-quote">
+      <div class="kicker on-dark">Emerging doctoral question</div>
+      <h3>"How can intelligent decision-support systems integrate predictive analytics, explainable machine learning, and human judgement to support reliable decision-making in complex operational environments?"</h3>
+      <p>This represents an emerging research direction informed by my previous research rather than a completed research finding.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMIC BACKGROUND -->
+<section class="section-padding" id="background" style="background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="container-narrow">
+    <div class="kicker">Academic background</div>
+    <h2 class="section-title mb-5">Academic foundation</h2>
+
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="education-card">
+          <div class="education-meta">Master's degree</div>
+          <h3 class="mt-2">[Insert exact master's programme]</h3>
+          <p>[Insert institution]</p>
+          <p style="color:var(--muted);">Master's research: <em>Development and Analysis of a Real-Time Port Activity Monitoring Dashboard in Ghana</em></p>
+        </div>
+        <div class="education-card">
+          <div class="education-meta">Bachelor's degree</div>
+          <h3 class="mt-2">BSc Information Technology</h3>
+          <p>University of Energy and Natural Resources</p>
+          <p style="color:var(--muted);">Undergraduate research: <em>Predicting Product Demand Using Machine Learning</em></p>
+        </div>
+        <div class="education-card">
+          <div class="education-meta">Relevant research &amp; professional development</div>
+          <h3 class="mt-2">Data analytics &amp; cybersecurity</h3>
+          <p style="color:var(--muted);">Relevant professional training and certifications supporting my analytical and technical development.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH DOCUMENTS -->
+<section class="section-padding" id="documents">
+  <div class="container-narrow">
+    <div class="kicker">Research documents</div>
+    <h2 class="section-title">Research evidence</h2>
+    <p class="section-description mb-5">
+      This section is intentionally evidence-based. Completed research is
+      presented separately from emerging research interests and proposed
+      future work.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="doc-panel">
+          <div class="doc-ref">DOC–01 · CV</div>
+          <h3>Research CV</h3>
+          <p>Academic CV covering research experience, education, capabilities and research interests.</p>
+          <a href="assets/Eric_Kumi_Research_CV.pdf" class="btn-sm-line mt-2" target="_blank">View CV</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="doc-panel">
+          <div class="doc-ref">DOC–02 · Thesis</div>
+          <h3>Master's thesis</h3>
+          <p>Full master's research documenting the problem, methodology, analysis, artefact, findings and recommendations.</p>
+          <a href="assets/masters-thesis.pdf" class="btn-sm-line mt-2" target="_blank">View thesis</a>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="doc-panel">
+          <div class="doc-ref">DOC–03 · Thesis</div>
+          <h3>Undergraduate thesis</h3>
+          <p>Undergraduate research investigating forecasting and machine-learning approaches to product demand prediction.</p>
+          <a href="assets/undergraduate-thesis.pdf" class="btn-sm-line mt-2" target="_blank">View thesis</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-padding contact-section" id="contact">
+  <div class="grid-backdrop dark"></div>
+  <div class="container-narrow" style="position:relative;z-index:2;">
+    <div class="row g-5">
+      <div class="col-lg-7">
+        <div class="kicker on-dark">Academic contact</div>
+        <h2 class="section-title">Research, doctoral study &amp; collaboration</h2>
+        <p class="section-description">
+          I am interested in doctoral research opportunities, research
+          collaborations, and conversations around machine learning,
+          predictive analytics, intelligent decision systems, and
+          data-driven decision support.
+        </p>
+      </div>
+      <div class="col-lg-5">
+        <a href="mailto:erbeasku@gmail.com" class="contact-link"><i class="bi bi-envelope"></i>erbeasku@gmail.com</a>
+        <a href="https://www.linkedin.com/in/eric-kumi-0359922a1" class="contact-link" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i>LinkedIn</a>
+        <a href="https://github.com/Spacely7" class="contact-link" target="_blank" rel="noopener"><i class="bi bi-github"></i>GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container-narrow d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+    <div>© 2026 Eric Kumi</div>
+    <div>Data Researcher · Machine Learning · Intelligent Decision Systems</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+const navCollapse = document.querySelector(".navbar-collapse");
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    if (navCollapse.classList.contains("show")) {
+      const bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+      if (bsCollapse) bsCollapse.hide();
+    }
+  });
+});
+</script>
+
+</body>
+</html>
